@@ -1,23 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import PresentationList from './PresentationList';
+// import Presentation from './Presentation';
 
 function App() {
+  const [nickname, setNickname] = useState('');
+  const [isJoined, setIsJoined] = useState(false);
+
+  const handleJoin = () => {
+    if (nickname.trim()) setIsJoined(true);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      {!isJoined ? (
+        <div>
+          <h1>Enter your nickname</h1>
+          <input
+            value={nickname}
+            onChange={(e) => setNickname(e.target.value)}
+          />
+          <button
+            style={{
+              backgroundColor: '#3f51b5',
+              color: 'white',
+              padding: '5px 10px',
+              borderRadius: '5px',
+              border: 'none',
+            }}
+            onClick={handleJoin}
+          >
+            Join
+          </button>
+        </div>
+      ) : (
+        <PresentationList nickname={nickname} />
+      )}
     </div>
   );
 }
