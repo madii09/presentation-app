@@ -81,36 +81,29 @@ function PresentationList({ nickname }) {
       <Canvas />
     </div>
   ) : (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-      }}
-    >
-      <div>
-        <h1>Presentations</h1>
-        <ul>
-          {presentations.map((presentation) => (
-            <li
-              key={presentation.id}
-              onClick={() => setSelectedPresentation(presentation.id)}
-            >
-              {presentation.id}
-            </li>
-          ))}
-        </ul>
-        <button
-          style={{
-            backgroundColor: '#3f51b5',
-            color: 'white',
-            padding: '10px 20px',
-            borderRadius: '5px',
-          }}
-          onClick={createPresentation}
-        >
-          Create New Presentation
-        </button>
-      </div>
+    <div>
+      <h1>Presentations</h1>
+      <ul>
+        {presentations.map((presentation) => (
+          <li
+            key={presentation.id}
+            onClick={() => setSelectedPresentation(presentation.id)}
+          >
+            {presentation.id}
+          </li>
+        ))}
+      </ul>
+      <button
+        style={{
+          backgroundColor: '#3f51b5',
+          color: 'white',
+          padding: '10px 20px',
+          borderRadius: '5px',
+        }}
+        onClick={createPresentation}
+      >
+        Create New Presentation
+      </button>
     </div>
   );
 }
